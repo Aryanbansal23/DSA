@@ -14,9 +14,7 @@ public:
                 for(int k=0;k<i;k++){
                 left+=nums[k];}
             }
-            if(i==n){
-                right=0;
-            }
+         
             diff=abs(left-right);
             q.push_back(diff);
             left=0;
