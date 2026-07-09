@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        unordered_map<int, int> mp;
+        vector<int> ans;
+        for (int x : arr1) {
+            mp[x]++;
+        }
+        for (int x : arr2) {
+            while (mp[x] > 0) {
+                ans.push_back(x);
+                mp[x]--;
+            }
+        }
+        vector<int> rem;
+        for (auto &it : mp) {
+            while (it.second > 0) {
+                rem.push_back(it.first);
+                it.second--;
+            }
+        }
+        sort(rem.begin(), rem.end());
+        ans.insert(ans.end(), rem.begin(), rem.end());
+
+        return ans;
+    }
+};
